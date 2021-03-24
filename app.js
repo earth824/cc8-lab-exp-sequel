@@ -1,9 +1,12 @@
 const express = require('express');
+const customerRoute = require('./routes/customerRoute');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use('/customers', customerRoute);
 
 app.use((req, res, next) => {
   res.status(404).json({ message: 'path not found on this server' });
